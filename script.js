@@ -8,7 +8,7 @@ document.getElementById("startButton").addEventListener("click", function() {
     document.getElementById("numberDisplay").textContent = randomNumber;
 });
 
-document.getElementById("generateButton").addEventListener("click", function() {
+document.getElementById("nextButton").addEventListener("click", function() {
     // Generate and display a new random number
     var randomNumber = Math.floor(Math.random() * 100) + 1;
     document.getElementById("numberDisplay").textContent = randomNumber;
@@ -16,8 +16,8 @@ document.getElementById("generateButton").addEventListener("click", function() {
 
 document.getElementById("endButton").addEventListener("click", function() {
     document.getElementById("numberDisplay").textContent = "Finished!";
-    var generateButton = document.getElementById("generateButton");
-    generateButton.parentNode.removeChild(generateButton);
+    var nextButton = document.getElementById("nextButton");
+    nextButton.parentNode.removeChild(nextButton);
 
     var endButton = document.getElementById("endButton");
     endButton.parentNode.removeChild(endButton);
