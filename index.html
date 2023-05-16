@@ -33,24 +33,29 @@
     </head>
 
     <body class="d-flex h-100 text-center text-white bg-dark">
-    
+
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
           <header class="mb-auto">
           </header>
-        
-          <main class="px-3">
+      
+          <main id="mainContent" class="px-3">
             <h1>Practice your mental math.</h1>
             <p class="lead">Strengthen your math skills with this simple game. Answer as many questions as you can, as fast as you can.</p>
             <p class="lead">
-              <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Start playing</a>
+              <a id="startButton" href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Start playing</a>
             </p>
           </main>
-        
+      
+          <div id="gameContent" class="d-none">
+            <h1 id="numberDisplay"></h1>
+            <button id="generateButton" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Generate new number</button>
+          </div>
+      
           <footer class="mt-auto text-white-50">
             <p>Check me out at <a href="https://qayyumayaan.github.io/" class="text-white">my website</a>.</p>
           </footer>
         </div>
 
-        
-    </body>
+        <script src="script.js"></script>
+      </body>
 </html>
