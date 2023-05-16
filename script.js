@@ -14,18 +14,12 @@ document.getElementById("startButton").addEventListener("click", function() {
 
 document.getElementById("nextButton").addEventListener("click", function() {
     var userInput = document.getElementById("validationServer05").value;
-    var correctParagraph = document.getElementById("correct");
-    var incorrectParagraph = document.getElementById("incorrect");
     var answerLabel = document.getElementById("answerLabel");
 
     if (userInput == oldRandom) {
-        correctParagraph.classList.remove("hidden");
-        incorrectParagraph.classList.add("hidden");
         answerLabel.textContent = "Correct!";
         answerLabel.style.color = "green";
     } else {
-        incorrectParagraph.classList.remove("hidden");
-        correctParagraph.classList.add("hidden");
         answerLabel.textContent = "Incorrect!";
         answerLabel.style.color = "red";
     }
