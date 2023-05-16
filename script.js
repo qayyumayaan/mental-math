@@ -1,36 +1,37 @@
+var oldRandom;
+
 document.getElementById("startButton").addEventListener("click", function() {
-    // Hide the main content and show the game content
     document.getElementById("mainContent").classList.add("d-none");
     document.getElementById("gameContent").classList.remove("d-none");
 
-    // Generate and display a random number
-    var randomNumber = Math.floor(Math.random() * 100) + 1;
-    document.getElementById("numberDisplay").textContent = randomNumber;
+    oldRandom = Math.floor(Math.random() * 100) + 1;
+    document.getElementById("numberDisplay").textContent = oldRandom;
 });
 
-document.getElementById("nextButton").addEventListener("click", function() {
-    // Generate and display a new random number
-    var randomNumber = Math.floor(Math.random() * 100) + 1;
-    document.getElementById("numberDisplay").textContent = randomNumber;
-    
-    // Reset the input field
-    document.getElementById("validationServer05").value = '';
-    document.getElementById("validationServer05").classList.remove("is-invalid");
-    document.querySelector("#inputForm .invalid-feedback").style.display = 'none';
-});
 
 document.getElementById("nextButton").addEventListener("click", function() {
     var userInput = document.getElementById("validationServer05").value;
-    if (userInput === document.getElementById("numberDisplay").textContent) {
-        // The inputted number matches the displayed number
-        // Perform the desired action here
+
+
+    if (userInput == oldRandom) {
         console.log("Correct number!");
     } else {
-        // The inputted number does not match the displayed number
-        // Perform the desired action here
         console.log("Incorrect number!");
     }
+
+    var randomNumber = Math.floor(Math.random() * 100) + 1;
+    document.getElementById("numberDisplay").textContent = randomNumber;
+    oldRandom = randomNumber;
+
+    document.getElementById("validationServer05").value = '';
+    document.getElementById("validationServer05").classList.remove("is-invalid");
+    
+    var invalidFeedback = document.querySelector("#inputForm .invalid-feedback");
+    if (invalidFeedback) {
+        invalidFeedback.style.display = 'none';
+    }
 });
+
 
 
 
