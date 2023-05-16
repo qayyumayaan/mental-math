@@ -19,6 +19,20 @@ document.getElementById("nextButton").addEventListener("click", function() {
     document.querySelector("#inputForm .invalid-feedback").style.display = 'none';
 });
 
+document.getElementById("nextButton").addEventListener("click", function() {
+    var userInput = document.getElementById("validationServer05").value;
+    if (userInput === document.getElementById("numberDisplay").textContent) {
+        // The inputted number matches the displayed number
+        // Perform the desired action here
+        console.log("Correct number!");
+    } else {
+        // The inputted number does not match the displayed number
+        // Perform the desired action here
+        console.log("Incorrect number!");
+    }
+});
+
+
 
 document.getElementById("endButton").addEventListener("click", function() {
     document.getElementById("numberDisplay").textContent = "Finished!";
