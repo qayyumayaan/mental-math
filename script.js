@@ -21,4 +21,7 @@ document.getElementById("endButton").addEventListener("click", function() {
     
     var endButton = document.getElementById("endButton");
     endButton.parentNode.removeChild(endButton);
+
+    var endButton = document.getElementById("inputForm");
+    endButton.parentNode.removeChild(inputForm);
 });
