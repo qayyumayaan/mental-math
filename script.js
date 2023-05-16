@@ -48,15 +48,3 @@ document.getElementById("endButton").addEventListener("click", function() {
     var finishedContent = document.getElementById("finishedContent");
     finishedContent.classList.remove("d-none");
 });
-
-const input = document.getElementById("validationServer05");
-              
-input.addEventListener("input", function() {
-  const value = input.value.trim(); 
-
-  if (isNaN(value)) {
-    input.classList.add("is-invalid"); 
-  } else {
-    input.classList.remove("is-invalid"); 
-  }
-});
