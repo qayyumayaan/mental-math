@@ -1,4 +1,7 @@
 var oldRandom;
+var numCorrect;
+var numFalse;
+var numTotal;
 
 document.getElementById("startButton").addEventListener("click", function() {
     document.getElementById("mainContent").classList.add("d-none");
@@ -11,12 +14,20 @@ document.getElementById("startButton").addEventListener("click", function() {
 
 document.getElementById("nextButton").addEventListener("click", function() {
     var userInput = document.getElementById("validationServer05").value;
-
+    var correctParagraph = document.getElementById("correct");
+    var incorrectParagraph = document.getElementById("incorrect");
+    var answerLabel = document.getElementById("answerLabel");
 
     if (userInput == oldRandom) {
-        console.log("Correct number!");
+        correctParagraph.classList.remove("hidden");
+        incorrectParagraph.classList.add("hidden");
+        answerLabel.textContent = "Correct!";
+        answerLabel.style.color = "green";
     } else {
-        console.log("Incorrect number!");
+        incorrectParagraph.classList.remove("hidden");
+        correctParagraph.classList.add("hidden");
+        answerLabel.textContent = "Incorrect!";
+        answerLabel.style.color = "red";
     }
 
     var randomNumber = Math.floor(Math.random() * 100) + 1;
@@ -25,12 +36,15 @@ document.getElementById("nextButton").addEventListener("click", function() {
 
     document.getElementById("validationServer05").value = '';
     document.getElementById("validationServer05").classList.remove("is-invalid");
-    
+
     var invalidFeedback = document.querySelector("#inputForm .invalid-feedback");
     if (invalidFeedback) {
         invalidFeedback.style.display = 'none';
     }
 });
+
+
+
 
 
 
