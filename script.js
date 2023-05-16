@@ -12,7 +12,13 @@ document.getElementById("nextButton").addEventListener("click", function() {
     // Generate and display a new random number
     var randomNumber = Math.floor(Math.random() * 100) + 1;
     document.getElementById("numberDisplay").textContent = randomNumber;
+    
+    // Reset the input field
+    document.getElementById("validationServer05").value = '';
+    document.getElementById("validationServer05").classList.remove("is-invalid");
+    document.querySelector("#inputForm .invalid-feedback").style.display = 'none';
 });
+
 
 document.getElementById("endButton").addEventListener("click", function() {
     document.getElementById("numberDisplay").textContent = "Finished!";
