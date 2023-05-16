@@ -18,10 +18,13 @@ document.getElementById("endButton").addEventListener("click", function() {
     document.getElementById("numberDisplay").textContent = "Finished!";
     var generateButton = document.getElementById("generateButton");
     generateButton.parentNode.removeChild(generateButton);
-    
+
     var endButton = document.getElementById("endButton");
     endButton.parentNode.removeChild(endButton);
 
-    var endButton = document.getElementById("inputForm");
-    endButton.parentNode.removeChild(inputForm);
+    var inputForm = document.getElementById("inputForm");
+    inputForm.parentNode.removeChild(inputForm);
+
+    var finishedContent = document.getElementById("finishedContent");
+    finishedContent.classList.remove("d-none");
 });
