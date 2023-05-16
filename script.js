@@ -13,3 +13,12 @@ document.getElementById("generateButton").addEventListener("click", function() {
     var randomNumber = Math.floor(Math.random() * 100) + 1;
     document.getElementById("numberDisplay").textContent = randomNumber;
 });
+
+document.getElementById("endButton").addEventListener("click", function() {
+    document.getElementById("numberDisplay").textContent = "Finished!";
+    var generateButton = document.getElementById("generateButton");
+    generateButton.parentNode.removeChild(generateButton);
+    
+    var endButton = document.getElementById("endButton");
+    endButton.parentNode.removeChild(endButton);
+});
