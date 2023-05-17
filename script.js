@@ -43,6 +43,7 @@ document.getElementById("endButton").addEventListener("click", function() {
     finishedContent.classList.remove("d-none");
 });
 
+
 // Get the input field
 var userInput = document.getElementById("userInput");
 
