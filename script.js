@@ -8,7 +8,7 @@ document.getElementById("startButton").addEventListener("click", function() {
 document.getElementById("nextButton").addEventListener("click", function() {
     var userInput = document.getElementById("userInput").value;
     var expressionLabel = document.getElementById("expressionLabel");
-
+    console.log("user input: " + userInput);
     if (checkAnswer(expressionLabel.textContent, userInput)) {
         expressionLabel.textContent = "Correct!";
         expressionLabel.style.color = "green";
@@ -62,31 +62,43 @@ function generateExpression() {
 }
 
 // Check if the user's answer is correct
-// Check if the user's answer is correct
 function checkAnswer(expression, answer) {
-  const [num1, operator, num2] = expression.split(" ");
-  let result;
-
-  switch (operator) {
-    case "+":
-      result = parseFloat(num1) + parseFloat(num2);
-      break;
-    case "-":
-      result = parseFloat(num1) - parseFloat(num2);
-      break;
-    case "*":
-      result = parseFloat(num1) * parseFloat(num2);
-      break;
-    case "/":
-      result = parseFloat(num1) / parseFloat(num2);
-      break;
-    default:
-      return false;
+    console.log(expression);
+  
+    const matches = expression.match(/(\d+)\s*([+\-*/])\s*(\d+)/);
+  
+    if (matches) {
+      const num1 = parseInt(matches[1]);
+      const operator = matches[2];
+      const num2 = parseInt(matches[3]);
+  
+      let result;
+  
+      console.log(num1 + " " + operator + " " + num2);
+  
+      switch (operator) {
+        case "+":
+          result = parseFloat(num1) + parseFloat(num2);
+          break;
+        case "-":
+          result = parseFloat(num1) - parseFloat(num2);
+          break;
+        case "*":
+          result = parseFloat(num1) * parseFloat(num2);
+          break;
+        case "/":
+          result = parseFloat(num1) / parseFloat(num2);
+          break;
+        default:
+          return false;
+      }
+  
+      console.log(result);
+      console.log();
+  
+      return parseFloat(answer) === result;
+    }
+  
+    console.log("Expression format is invalid.");
+    return false;
   }
-
-  console.log(result);
-  console.log()
-
-  return parseFloat(answer) == result;
-}
-
