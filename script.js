@@ -50,7 +50,7 @@ document.getElementById("endButton").addEventListener("click", function() {
     totalQuestions -= 1;
     if (totalQuestions == 0) totalQuestions = 1
     var accuracy = (correctAnswers / totalQuestions) * 100;
-    numCorrectElement.textContent = `You got ${correctAnswers} right out of ${totalQuestions} (${accuracy.toFixed(0)}%)! (First question is practice)`;
+    // numCorrectElement.textContent = `You got ${correctAnswers} right out of ${totalQuestions} (${accuracy.toFixed(0)}%)! (First question is practice)`;
   });
   
   
