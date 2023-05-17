@@ -1,32 +1,23 @@
-var oldRandom;
-var numCorrect;
-var numFalse;
-var numTotal;
-
 document.getElementById("startButton").addEventListener("click", function() {
     document.getElementById("mainContent").classList.add("d-none");
     document.getElementById("gameContent").classList.remove("d-none");
 
-    oldRandom = Math.floor(Math.random() * 100) + 1;
-    document.getElementById("numberDisplay").textContent = oldRandom;
+    generateQuestion();
 });
-
 
 document.getElementById("nextButton").addEventListener("click", function() {
     var userInput = document.getElementById("validationServer05").value;
-    var answerLabel = document.getElementById("answerLabel");
+    var expressionLabel = document.getElementById("expressionLabel");
 
-    if (userInput == oldRandom) {
-        answerLabel.textContent = "Correct!";
-        answerLabel.style.color = "green";
+    if (checkAnswer(expressionLabel.textContent, userInput)) {
+        expressionLabel.textContent = "Correct!";
+        expressionLabel.style.color = "green";
     } else {
-        answerLabel.textContent = "Incorrect!";
-        answerLabel.style.color = "red";
+        expressionLabel.textContent = "Incorrect!";
+        expressionLabel.style.color = "red";
     }
 
-    var randomNumber = Math.floor(Math.random() * 100) + 1;
-    document.getElementById("numberDisplay").textContent = randomNumber;
-    oldRandom = randomNumber;
+    generateQuestion();
 
     document.getElementById("validationServer05").value = '';
     document.getElementById("validationServer05").classList.remove("is-invalid");
@@ -36,12 +27,6 @@ document.getElementById("nextButton").addEventListener("click", function() {
         invalidFeedback.style.display = 'none';
     }
 });
-
-
-
-
-
-
 
 document.getElementById("endButton").addEventListener("click", function() {
     document.getElementById("numberDisplay").textContent = "Finished!";
@@ -57,3 +42,48 @@ document.getElementById("endButton").addEventListener("click", function() {
     var finishedContent = document.getElementById("finishedContent");
     finishedContent.classList.remove("d-none");
 });
+
+// Generate a new math question
+function generateQuestion() {
+    var expressionLabel = document.getElementById("expressionLabel");
+    var expression = generateExpression();
+    expressionLabel.textContent = `What is the result of ${expression}?`;
+    document.getElementById("numberDisplay").textContent = expression;
+}
+
+// Generate a random math expression
+function generateExpression() {
+    const operations = ['*', '/', '+', '-'];
+    const num1 = Math.floor(Math.random() * 20) + 1;
+    const num2 = Math.floor(Math.random() * 20) + 1;
+    const operation = operations[Math.floor(Math.random() * operations.length)];
+
+    return `${num1} ${operation} ${num2}`;
+}
+
+// Check if the user's answer is correct
+// Check if the user's answer is correct
+function checkAnswer(expression, answer) {
+  const [num1, operator, num2] = expression.split(" ");
+  let result;
+
+  switch (operator) {
+    case "+":
+      result = parseFloat(num1) + parseFloat(num2);
+      break;
+    case "-":
+      result = parseFloat(num1) - parseFloat(num2);
+      break;
+    case "*":
+      result = parseFloat(num1) * parseFloat(num2);
+      break;
+    case "/":
+      result = parseFloat(num1) / parseFloat(num2);
+      break;
+    default:
+      return false;
+  }
+
+  return parseFloat(answer) === result;
+}
+
