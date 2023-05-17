@@ -54,16 +54,25 @@ function generateQuestion() {
 // Generate a random math expression
 function generateExpression() {
     const operations = ['*', '/', '+', '-'];
-    const num1 = Math.floor(Math.random() * 20) + 1;
-    const num2 = Math.floor(Math.random() * 20) + 1;
-    const operation = operations[Math.floor(Math.random() * operations.length)];
+    let expression;
+    let result;
+    let isValid = false;
 
-    return `${num1} ${operation} ${num2}`;
+    while (!isValid) {
+        const num1 = Math.floor(Math.random() * 20) + 1;
+        const num2 = Math.floor(Math.random() * 20) + 1;
+        const operation = operations[Math.floor(Math.random() * operations.length)];
+        expression = `${num1} ${operation} ${num2}`;
+        result = eval(expression);
+        isValid = Number.isInteger(result);
+    }
+
+    return expression;
 }
 
 // Check if the user's answer is correct
 function checkAnswer(expression, answer) {
-      
+
     const matches = expression.match(/(\d+)\s*([+\-*/])\s*(\d+)/);
   
     if (matches) {
@@ -75,22 +84,22 @@ function checkAnswer(expression, answer) {
     
       switch (operator) {
         case "+":
-          result = parseFloat(num1) + parseFloat(num2);
+          result = parseInt(num1) + parseInt(num2);
           break;
         case "-":
-          result = parseFloat(num1) - parseFloat(num2);
+          result = parseInt(num1) - parseInt(num2);
           break;
         case "*":
-          result = parseFloat(num1) * parseFloat(num2);
+          result = parseInt(num1) * parseInt(num2);
           break;
         case "/":
-          result = parseFloat(num1) / parseFloat(num2);
+          result = parseInt(num1) / parseInt(num2);
           break;
         default:
           return false;
       }
   
-      return parseFloat(answer) === result;
+      return parseInt(answer) === result;
     }
   
     console.log("Expression format is invalid. " + "num1: " + num1 + " operator: " + operator + " num2: " + num2 + " original expression: " + expression);
