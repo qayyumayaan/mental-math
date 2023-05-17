@@ -63,8 +63,7 @@ function generateExpression() {
 
 // Check if the user's answer is correct
 function checkAnswer(expression, answer) {
-    console.log(expression);
-  
+      
     const matches = expression.match(/(\d+)\s*([+\-*/])\s*(\d+)/);
   
     if (matches) {
@@ -73,9 +72,7 @@ function checkAnswer(expression, answer) {
       const num2 = parseInt(matches[3]);
   
       let result;
-  
-      console.log(num1 + " " + operator + " " + num2);
-  
+    
       switch (operator) {
         case "+":
           result = parseFloat(num1) + parseFloat(num2);
@@ -93,12 +90,9 @@ function checkAnswer(expression, answer) {
           return false;
       }
   
-      console.log(result);
-      console.log();
-  
       return parseFloat(answer) === result;
     }
   
-    console.log("Expression format is invalid.");
+    console.log("Expression format is invalid. " + "num1: " + num1 + " operator: " + operator + " num2: " + num2 + " original expression: " + expression);
     return false;
   }
