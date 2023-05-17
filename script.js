@@ -33,6 +33,7 @@ document.getElementById("nextButton").addEventListener("click", function() {
 
 document.getElementById("endButton").addEventListener("click", function() {
     document.getElementById("numberDisplay").textContent = "Finished!";
+    
     var nextButton = document.getElementById("nextButton");
     nextButton.parentNode.removeChild(nextButton);
   
@@ -46,8 +47,10 @@ document.getElementById("endButton").addEventListener("click", function() {
     finishedContent.classList.remove("d-none");
   
     var numCorrectElement = document.getElementById("numCorrect");
+    totalQuestions -= 1;
+    if (totalQuestions == 0) totalQuestions = 1
     var accuracy = (correctAnswers / totalQuestions) * 100;
-    numCorrectElement.textContent = `You got ${correctAnswers} right out of ${totalQuestions} (${accuracy.toFixed(0)}%)!`;
+    numCorrectElement.textContent = `You got ${correctAnswers} right out of ${totalQuestions} (${accuracy.toFixed(0)}%)! (First question is practice)`;
   });
   
   
@@ -59,7 +62,7 @@ var userInput = document.getElementById("userInput");
 // Add event listener for keydown event
 userInput.addEventListener("keydown", function(event) {
   // Check if the key code is for the enter key
-  if (event.keyCode === 13) {
+  if (event.key === 'Enter') {
     // Prevent the default form submission behavior
     event.preventDefault();
 
