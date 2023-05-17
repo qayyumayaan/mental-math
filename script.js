@@ -8,7 +8,7 @@ document.getElementById("startButton").addEventListener("click", function() {
 document.getElementById("nextButton").addEventListener("click", function() {
     var userInput = document.getElementById("userInput").value;
     var expressionLabel = document.getElementById("expressionLabel");
-    console.log("user input: " + userInput);
+
     if (checkAnswer(expressionLabel.textContent, userInput)) {
         expressionLabel.textContent = "Correct!";
         expressionLabel.style.color = "green";
@@ -59,8 +59,8 @@ function generateExpression() {
     let isValid = false;
 
     while (!isValid) {
-        const num1 = Math.floor(Math.random() * 20) + 1;
-        const num2 = Math.floor(Math.random() * 20) + 1;
+        const num1 = Math.floor(Math.random() * 15) + 1;
+        const num2 = Math.floor(Math.random() * 15) + 1;
         const operation = operations[Math.floor(Math.random() * operations.length)];
         expression = `${num1} ${operation} ${num2}`;
         result = eval(expression);
