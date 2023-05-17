@@ -1,3 +1,6 @@
+var correctAnswers = 0;
+var totalQuestions = 0;
+
 document.getElementById("startButton").addEventListener("click", function() {
     document.getElementById("mainContent").classList.add("d-none");
     document.getElementById("gameContent").classList.remove("d-none");
@@ -32,16 +35,22 @@ document.getElementById("endButton").addEventListener("click", function() {
     document.getElementById("numberDisplay").textContent = "Finished!";
     var nextButton = document.getElementById("nextButton");
     nextButton.parentNode.removeChild(nextButton);
-
+  
     var endButton = document.getElementById("endButton");
     endButton.parentNode.removeChild(endButton);
-
+  
     var inputForm = document.getElementById("inputForm");
     inputForm.parentNode.removeChild(inputForm);
-
+  
     var finishedContent = document.getElementById("finishedContent");
     finishedContent.classList.remove("d-none");
-});
+  
+    var numCorrectElement = document.getElementById("numCorrect");
+    var accuracy = (correctAnswers / totalQuestions) * 100;
+    numCorrectElement.textContent = `You got ${correctAnswers} right out of ${totalQuestions} (${accuracy.toFixed(0)}%)!`;
+  });
+  
+  
 
 
 // Get the input field
@@ -69,6 +78,7 @@ function evaluateInput() {
   if (checkAnswer(expressionLabel.textContent, input)) {
     expressionLabel.textContent = "Correct!";
     expressionLabel.style.color = "green";
+    correctAnswers++; // Increment correctAnswers
   } else {
     expressionLabel.textContent = "Incorrect!";
     expressionLabel.style.color = "red";
@@ -85,13 +95,16 @@ function evaluateInput() {
   }
 }
 
+
 // Generate a new math question
 function generateQuestion() {
     var expressionLabel = document.getElementById("expressionLabel");
     var expression = generateExpression();
     expressionLabel.textContent = `What is the result of ${expression}?`;
     document.getElementById("numberDisplay").textContent = expression;
-}
+  
+    totalQuestions++;
+  }  
 
 // Generate a random math expression
 function generateExpression() {
