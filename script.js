@@ -6,7 +6,7 @@ document.getElementById("startButton").addEventListener("click", function() {
 });
 
 document.getElementById("nextButton").addEventListener("click", function() {
-    var userInput = document.getElementById("validationServer05").value;
+    var userInput = document.getElementById("userInput").value;
     var expressionLabel = document.getElementById("expressionLabel");
 
     if (checkAnswer(expressionLabel.textContent, userInput)) {
@@ -19,8 +19,8 @@ document.getElementById("nextButton").addEventListener("click", function() {
 
     generateQuestion();
 
-    document.getElementById("validationServer05").value = '';
-    document.getElementById("validationServer05").classList.remove("is-invalid");
+    document.getElementById("userInput").value = '';
+    document.getElementById("userInput").classList.remove("is-invalid");
 
     var invalidFeedback = document.querySelector("#inputForm .invalid-feedback");
     if (invalidFeedback) {
@@ -84,6 +84,9 @@ function checkAnswer(expression, answer) {
       return false;
   }
 
-  return parseFloat(answer) === result;
+  console.log(result);
+  console.log()
+
+  return parseFloat(answer) == result;
 }
 
