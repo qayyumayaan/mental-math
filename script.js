@@ -43,6 +43,47 @@ document.getElementById("endButton").addEventListener("click", function() {
     finishedContent.classList.remove("d-none");
 });
 
+// Get the input field
+var userInput = document.getElementById("userInput");
+
+// Add event listener for keydown event
+userInput.addEventListener("keydown", function(event) {
+  // Check if the key code is for the enter key
+  if (event.keyCode === 13) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Trigger the evaluation of the input
+    evaluateInput();
+  }
+});
+
+// Function to evaluate the input
+function evaluateInput() {
+  // Get the user input value
+  var input = userInput.value;
+
+  var expressionLabel = document.getElementById("expressionLabel");
+
+  if (checkAnswer(expressionLabel.textContent, input)) {
+    expressionLabel.textContent = "Correct!";
+    expressionLabel.style.color = "green";
+  } else {
+    expressionLabel.textContent = "Incorrect!";
+    expressionLabel.style.color = "red";
+  }
+
+  generateQuestion();
+
+  document.getElementById("userInput").value = '';
+  document.getElementById("userInput").classList.remove("is-invalid");
+
+  var invalidFeedback = document.querySelector("#inputForm .invalid-feedback");
+  if (invalidFeedback) {
+    invalidFeedback.style.display = 'none';
+  }
+}
+
 // Generate a new math question
 function generateQuestion() {
     var expressionLabel = document.getElementById("expressionLabel");
